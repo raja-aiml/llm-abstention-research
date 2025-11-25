@@ -129,7 +129,7 @@ llm-abstention-research/
 | Benchmark | Year | Questions | Purpose | Link |
 |-----------|------|-----------|---------|------|
 | **SQuAD2** | 2018 | 100,000+ | Reading comprehension with unanswerable questions | [Dataset](https://rajpurkar.github.io/SQuAD-explorer/) |
-| **AbstentionBench** | 2024 | 35,000+ | Comprehensive abstention evaluation (20+ LLMs) | [GitHub](https://github.com/facebookresearch/AbstentionBench) |
+| **AbstentionBench** | 2024 | 35,000+ | Holistic evaluation across 20 LLMs, 6 scenarios | [GitHub](https://github.com/facebookresearch/AbstentionBench) \| [arXiv](https://arxiv.org/abs/2506.09038) \| [HuggingFace](https://huggingface.co/datasets/facebook/AbstentionBench) |
 | **Do-Not-Answer** | 2023 | 939 | Safety-focused: model refusal of harmful requests | [arXiv](https://arxiv.org/abs/2308.13387) |
 | **XSafety** | 2024 | 10,000+ | Multilingual safety across 14 languages | [arXiv](https://arxiv.org/abs/2405.18132) |
 
@@ -200,7 +200,7 @@ Financial advisor AI should admit lack of real-time data rather than predict sto
 
 ### Key Papers
 - **Wen et al. (2024)**: "Know Your Limits" — [Direct MIT Press Link](https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00754)
-- **Brahman et al. (2024)**: "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions" — [arXiv](https://arxiv.org/abs/2506.09038)
+- **Brahman, F., et al. (2024)**: "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions" — arXiv:2506.09038
 - **Madhusudhan et al. (2024)**: "Do LLMs Know When to NOT Answer?" — [arXiv](https://arxiv.org/abs/2407.16221)
 
 ### Benchmarks
@@ -240,6 +240,9 @@ Draft survey; citation placeholder until publication. For now, you can cite the 
 
 ---
 
-**Status**: Active Research Survey (work in progress) | **Last Updated**: November 2024 | **Papers Reviewed**: see SURVEY.md references | **Coverage**: 2023-2024 (updates planned)
+**Status**: Active Research Survey (work in progress) 
+**Last Updated**: November 2024 
+**Papers Reviewed**: see SURVEY.md references 
+**Coverage**: 2023-2024 (updates planned)
 
 **Happy learning!** 🚀
