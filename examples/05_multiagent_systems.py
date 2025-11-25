@@ -12,10 +12,8 @@ Three sub-methods:
 """
 
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
 from collections import Counter
-import warnings
-warnings.filterwarnings('ignore')
+from utils import load_tokenizer_and_model
 
 
 class MultiAgentSystem:
@@ -27,19 +25,7 @@ class MultiAgentSystem:
     def __init__(self, model_name="mistralai/Mistral-7B-Instruct-v0.1", num_agents=3):
         """Load model and tokenizer for all agents (same model, different prompts)"""
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        if self.tokenizer.pad_token_id is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token  # Silence pad/eos warning for decoder-only models
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-            device_map="auto" if torch.cuda.is_available() else None
-        )
-        if self.model.config.pad_token_id is None:
-            self.model.config.pad_token_id = self.tokenizer.pad_token_id
-        if self.model.generation_config.pad_token_id is None:
-            self.model.generation_config.pad_token_id = self.tokenizer.pad_token_id
-        self.model.eval()
+        self.tokenizer, self.model = load_tokenizer_and_model(model_name)
         self.num_agents = num_agents
     
     def _generate_response(self, prompt, temperature=0.7, max_tokens=50):

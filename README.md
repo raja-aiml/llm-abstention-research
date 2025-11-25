@@ -16,7 +16,7 @@ Choose your starting point based on your background:
 
 ### 📖 **For Researchers & Practitioners**
 → **[SURVEY.md](SURVEY.md)**
-- Comprehensive technical survey (50+ papers reviewed)
+- Comprehensive technical survey (work in progress; see SURVEY.md citations)
 - Unified taxonomy of abstention techniques
 - Evaluation frameworks and metrics (AUCM)
 - Benchmark analysis (AbstentionBench, SQuAD2, Do-Not-Answer)
@@ -94,7 +94,7 @@ Question: "What's treatment for XYZ rare disease?"
 ## 🏆 Key Findings
 
 1. **Abstention remains unsolved** — Current methods provide only modest improvements
-2. **Scaling doesn't help** — Bigger models aren't automatically better at knowing when to abstain
+2. **Scaling alone shows limited gains** — AbstentionBench finds minimal benefit from larger models without calibration
 3. **Reasoning backfires** — Fine-tuning for reasoning actually makes abstention worse
 4. **Prompting is temporary** — Asking nicely helps briefly, but needs reinforcement training
 5. **Architecture matters** — Fundamental changes to training are needed
@@ -129,7 +129,7 @@ llm-abstention-research/
 | Benchmark | Year | Questions | Purpose | Link |
 |-----------|------|-----------|---------|------|
 | **SQuAD2** | 2018 | 100,000+ | Reading comprehension with unanswerable questions | [Dataset](https://rajpurkar.github.io/SQuAD-explorer/) |
-| **AbstentionBench** | 2025 | 35,000+ | Comprehensive abstention evaluation (20+ LLMs) | [GitHub](https://github.com/facebookresearch/AbstentionBench) |
+| **AbstentionBench** | 2024 | 35,000+ | Comprehensive abstention evaluation (20+ LLMs) | [GitHub](https://github.com/facebookresearch/AbstentionBench) |
 | **Do-Not-Answer** | 2023 | 939 | Safety-focused: model refusal of harmful requests | [arXiv](https://arxiv.org/abs/2308.13387) |
 | **XSafety** | 2024 | 10,000+ | Multilingual safety across 14 languages | [arXiv](https://arxiv.org/abs/2405.18132) |
 
@@ -200,7 +200,7 @@ Financial advisor AI should admit lack of real-time data rather than predict sto
 
 ### Key Papers
 - **Wen et al. (2024)**: "Know Your Limits" — [Direct MIT Press Link](https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00754)
-- **Brahman et al. (2025)**: "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions" — [arXiv](https://arxiv.org/abs/2506.09038)
+- **Brahman et al. (2024)**: "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions" — [arXiv](https://arxiv.org/abs/2506.09038)
 - **Madhusudhan et al. (2024)**: "Do LLMs Know When to NOT Answer?" — [arXiv](https://arxiv.org/abs/2407.16221)
 
 ### Benchmarks
@@ -217,14 +217,15 @@ Financial advisor AI should admit lack of real-time data rather than predict sto
 
 ## 📝 Citation
 
-If you use this survey, cite it as:
+Draft survey; citation placeholder until publication. For now, you can cite the repository:
 
 ```bibtex
-@article{YourName2025,
-  title={Abstention in Large Language Models: A Comprehensive Survey on Uncertainty Recognition and Refusal Mechanisms},
-  author={Your Name and Collaborators},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2025}
+@misc{llm_abstention_research_2024,
+  title={LLM Abstention Research: Survey and Implementations},
+  author={LLM Abstention Research Contributors},
+  year={2024},
+  howpublished={\url{https://github.com/rajasoun/llm-abstention-research}},
+  note={Draft survey; subject to updates}
 }
 ```
 
@@ -239,6 +240,6 @@ If you use this survey, cite it as:
 
 ---
 
-**Status**: Active Research Survey | **Last Updated**: November 2025 | **Papers Reviewed**: 50+ | **Coverage**: 2023-2025
+**Status**: Active Research Survey (work in progress) | **Last Updated**: November 2024 | **Papers Reviewed**: see SURVEY.md references | **Coverage**: 2023-2024 (updates planned)
 
 **Happy learning!** 🚀

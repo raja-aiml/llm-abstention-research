@@ -12,11 +12,8 @@ Three sub-methods:
 """
 
 import torch
-import numpy as np
-from transformers import AutoTokenizer, AutoModelForCausalLM
 from sklearn.metrics.pairwise import cosine_similarity
-import warnings
-warnings.filterwarnings('ignore')
+from utils import load_tokenizer_and_model
 
 
 class SelectivePrediction:
@@ -28,26 +25,31 @@ class SelectivePrediction:
     def __init__(self, model_name="mistralai/Mistral-7B-Instruct-v0.1"):
         """Load model and tokenizer"""
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        if self.tokenizer.pad_token_id is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token  # Silence pad/eos warning for decoder-only models
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-            device_map="auto" if torch.cuda.is_available() else None
-        )
-        if self.model.config.pad_token_id is None:
-            self.model.config.pad_token_id = self.tokenizer.pad_token_id
-        if self.model.generation_config.pad_token_id is None:
-            self.model.generation_config.pad_token_id = self.tokenizer.pad_token_id
-        self.model.eval()
+        self.tokenizer, self.model = load_tokenizer_and_model(model_name)
+
+    def _mean_pool_embedding(self, text: str) -> torch.Tensor:
+        """Compute a simple embedding via mean-pooled last hidden state."""
+        tokens = self.tokenizer(
+            text,
+            return_tensors="pt",
+            padding=True,
+            truncation=True
+        ).to(self.device)
+        with torch.no_grad():
+            outputs = self.model(
+                **tokens,
+                output_hidden_states=True,
+                return_dict=True
+            )
+        last_hidden = outputs.hidden_states[-1]
+        return last_hidden.mean(dim=1).cpu()
     
     def method_1_semantic_similarity(self, question, context="", threshold=0.3):
         """
         METHOD 1: Semantic Similarity
         
         Paper principle (§4.2.3):
-        Compare generated answer to context via embedding similarity.
+        Compare generated answer to context via embedding cosine similarity.
         Low similarity → abstain (answer not grounded in context)
         
         Args:
@@ -81,15 +83,10 @@ class SelectivePrediction:
         response_ids = output[0, inputs.input_ids.shape[-1]:]
         response = self.tokenizer.decode(response_ids, skip_special_tokens=True)
         
-        # Simple similarity heuristic: check if key phrases from context appear in response
-        context_words = set(context.lower().split())
-        response_words = set(response.lower().split())
-        
-        # Jaccard similarity
-        if len(context_words | response_words) == 0:
-            similarity = 0.0
-        else:
-            similarity = len(context_words & response_words) / len(context_words | response_words)
+        # Semantic similarity via cosine of mean-pooled embeddings
+        context_emb = self._mean_pool_embedding(context)
+        response_emb = self._mean_pool_embedding(response)
+        similarity = float(cosine_similarity(context_emb, response_emb)[0][0])
         
         # Decision: Abstain if similarity too low
         if similarity < threshold:
