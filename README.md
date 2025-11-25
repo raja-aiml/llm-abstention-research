@@ -1,6 +1,6 @@
-# LLM Abstention Research
+# Large Language Model (LLM) Abstention Research
 
-A comprehensive survey on abstention techniques in Large Language Models—methods enabling AI models to recognize uncertainty and appropriately refuse to answer.
+A comprehensive survey on abstention techniques in Large Language Models (LLMs)—methods enabling artificial intelligence (AI) models to recognize uncertainty and appropriately refuse to answer.
 
 ## 📚 Documentation
 
@@ -18,17 +18,17 @@ Choose your starting point based on your background:
 → **[SURVEY.md](SURVEY.md)**
 - Comprehensive technical survey (work in progress; see SURVEY.md citations)
 - Unified taxonomy of abstention techniques
-- Evaluation frameworks and metrics (AUCM)
+- Evaluation frameworks and metrics such as Answerable-Unanswerable Confusion Matrix (AUCM)
 - Benchmark analysis (AbstentionBench, SQuAD2, Do-Not-Answer)
-- Empirical findings across 20+ LLMs
+- Empirical findings across 20+ large language models (LLMs)
 - Discussion of limitations and open challenges
 
 ### 🛠️ **For Implementation & Testing**
 → **[examples/README.md](examples/README.md)**
 - Runnable Python implementations of all 5 techniques
 - How to use AbstentionBench for testing
-- Step-by-step guide to evaluate your LLM
-- AUCM metrics calculation
+- Step-by-step guide to evaluate your large language model (LLM)
+- Answerable-Unanswerable Confusion Matrix (AUCM) metrics calculation
 - Comparing multiple models
 
 
@@ -129,7 +129,7 @@ llm-abstention-research/
 | Benchmark | Year | Questions | Purpose | Link |
 |-----------|------|-----------|---------|------|
 | **SQuAD2** | 2018 | 100,000+ | Reading comprehension with unanswerable questions | [Dataset](https://rajpurkar.github.io/SQuAD-explorer/) |
-| **AbstentionBench** | 2024 | 35,000+ | Holistic evaluation across 20 LLMs, 6 scenarios | [GitHub](https://github.com/facebookresearch/AbstentionBench) \| [arXiv](https://arxiv.org/abs/2506.09038) \| [HuggingFace](https://huggingface.co/datasets/facebook/AbstentionBench) |
+| **AbstentionBench** | 2024 | 35,000+ | Holistic evaluation across 20 large language models (LLMs), 6 scenarios | [GitHub](https://github.com/facebookresearch/AbstentionBench) \| [arXiv](https://arxiv.org/abs/2506.09038) \| [HuggingFace](https://huggingface.co/datasets/facebook/AbstentionBench) |
 | **Do-Not-Answer** | 2023 | 939 | Safety-focused: model refusal of harmful requests | [arXiv](https://arxiv.org/abs/2308.13387) |
 | **XSafety** | 2024 | 10,000+ | Multilingual safety across 14 languages | [arXiv](https://arxiv.org/abs/2405.18132) |
 
@@ -159,7 +159,7 @@ llm-abstention-research/
 **Developer / Want to test:**
 1. Read: **[examples/README.md](examples/README.md)** (30 min)
 2. Follow: Step-by-step code examples
-3. Test: On AbstentionBench with your LLM
+3. Test: On AbstentionBench with your large language model (LLM)
 
 ---
 
@@ -200,8 +200,8 @@ Financial advisor AI should admit lack of real-time data rather than predict sto
 
 ### Key Papers
 - **Wen et al. (2024)**: "Know Your Limits" — [Direct MIT Press Link](https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00754)
-- **Brahman, F., et al. (2024)**: "AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions" — arXiv:2506.09038
-- **Madhusudhan et al. (2024)**: "Do LLMs Know When to NOT Answer?" — [arXiv](https://arxiv.org/abs/2407.16221)
+- **Brahman, F., et al. (2024)**: "AbstentionBench: Reasoning LLMs (large language models) Fail on Unanswerable Questions" — arXiv:2506.09038
+- **Madhusudhan et al. (2024)**: "Do LLMs (large language models) Know When to NOT Answer?" — [arXiv](https://arxiv.org/abs/2407.16221)
 
 ### Benchmarks
 - **SQuAD2**: https://rajpurkar.github.io/SQuAD-explorer/
@@ -221,8 +221,8 @@ Draft survey; citation placeholder until publication. For now, you can cite the 
 
 ```bibtex
 @misc{llm_abstention_research_2024,
-  title={LLM Abstention Research: Survey and Implementations},
-  author={LLM Abstention Research Contributors},
+  title={Large Language Model Abstention Research: Survey and Implementations},
+  author={Large Language Model Abstention Research Contributors},
   year={2024},
   howpublished={\url{https://github.com/rajasoun/llm-abstention-research}},
   note={Draft survey; subject to updates}
